@@ -58,7 +58,7 @@ const logger = morgan(
 app.use(express.json());
 app.use(logger);
 app.use(cors());
-app.use(express.static("build"));
+app.use(express.static(path.join(__dirname, "build")));
 
 // App Getters
 // Get all persons

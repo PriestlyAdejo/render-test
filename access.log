@@ -6,3 +6,5 @@ GET /api/persons 200 223 - 0.718 ms {}
 GET /api/persons 200 223 - 0.483 ms {}
 GET /api/persons 200 223 - 0.265 ms {}
 GET /api/persons 200 223 - 3.787 ms {}
+GET /api/persons 304 - - 7.732 ms {}
+GET /api/persons 304 - - 1.055 ms {}

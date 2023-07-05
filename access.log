@@ -8,3 +8,5 @@ GET /api/persons 200 223 - 0.265 ms {}
 GET /api/persons 200 223 - 3.787 ms {}
 GET /api/persons 304 - - 7.732 ms {}
 GET /api/persons 304 - - 1.055 ms {}
+OPTIONS /api/persons 204 0 - 2.410 ms {}
+GET /api/persons 200 223 - 6.118 ms {}

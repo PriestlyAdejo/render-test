@@ -60,10 +60,36 @@ app.use(logger);
 app.use(cors());
 app.use(express.static(path.join(__dirname, "build")));
 
+// Setting up mongodb schemas
+const mongoose = require("mongoose");
+
+if (process.argv.length < 3) {
+	console.log("give password as argument");
+	process.exit(1);
+}
+
+const password = process.argv[2];
+
+const url = `mongodb+srv://priestly101:${password}@mongotest.g7pt5gh.mongodb.net/personApp?retryWrites=true&w=majority`;
+mongoose.set("strictQuery", false);
+mongoose.connect(url);
+
+const personSchema = new mongoose.Schema({
+	name: String,
+	number: String,
+});
+
+const Person = mongoose.model("Person", personSchema);
+
 // App Getters
 // Get all persons
-app.get("/api/persons", (request, response) => {
-	response.json(persons);
+app.get("/api/notes", (request, response) => {
+	Person.find({}).then((result) => {
+		result.forEach((person) => {
+			console.log(person.name, person.number);
+		});
+		mongoose.connection.close();
+	});
 });
 
 // Get person by id
